@@ -1,11 +1,12 @@
 <!-- =========================================================
  SGI — Public Course Page (Single File)
- Title: Modified Khemetian Tree of Life — 8-Week Initiatory Course (Public)
+ Title: SwamiG Institute — Modified Khemetian Tree of Life (8-Week Public Course)
  File: sgi-tree-of-life-8week-public.html
  Notes:
   - Static HTML. Works on GitHub Pages / Cloudflare Pages.
   - No external assets required.
   - Progress + checklists saved locally (localStorage).
+  - Emphasis: SwamiG Institute principles. IOWLH is minimized (optional mention only).
 ========================================================= -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <title>SwamiG Institute — Modified Khemetian Tree of Life (8-Week Public Course)</title>
-  <meta name="description" content="SGI Public Course: Modified Khemetian Tree of Life — 8-week initiatory course (Amen → Ausar → Heru → Tehuti/Maat → Sekert/Sebek/Het-Heru → Auset → Geb → Nehebkau/Uatchet/Sheps). Includes checklists and local progress." />
+  <meta name="description" content="SwamiG Institute public course: Modified Khemetian Tree of Life — 8-week initiatory curriculum (Amen → Ausar → Heru → Tehuti/Maat → Sekert/Sebek/Het-Heru → Auset → Geb → Nehebkau/Uatchet/Sheps). Includes SGI A–B–C paths and local progress tracking." />
 
   <style>
     :root{
@@ -30,7 +31,6 @@
       --max: 1120px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --serif: ui-serif, "Libre Baskerville", Georgia, "Times New Roman", serif;
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -86,7 +86,7 @@
       box-shadow: 0 0 0 5px var(--ring);
       flex:0 0 auto;
     }
-    .tlabel{font-weight:700; font-size:13px; letter-spacing:.2px}
+    .tlabel{font-weight:900; font-size:13px; letter-spacing:.2px}
     .tsub{font-size:12px; color:var(--muted); margin-left:2px}
 
     /* Hero */
@@ -117,8 +117,23 @@
       box-shadow: 0 0 0 7px var(--ring);
       display:grid; place-items:center;
       flex:0 0 auto;
+      position:relative;
+      overflow:hidden;
     }
-    .logo svg{ width:26px; height:26px; opacity:.9 }
+    /* subtle pulse */
+    .logo:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 40% 35%, rgba(255,255,255,.22), transparent 55%);
+      transform: rotate(10deg);
+      animation: glow 4.2s ease-in-out infinite;
+      opacity:.8;
+    }
+    @keyframes glow{
+      0%,100%{ transform: translate3d(-2%, -2%, 0) rotate(10deg); opacity:.65; }
+      50%{ transform: translate3d(2%, 2%, 0) rotate(10deg); opacity:.95; }
+    }
+    .logo svg{ width:26px; height:26px; opacity:.92; position:relative; z-index:1 }
     .brand{
       display:flex; flex-direction:column; line-height:1.15;
     }
@@ -126,10 +141,10 @@
     .brand span{font-size:12px; color:var(--muted)}
     h1{
       margin:10px 0 10px;
-      font: 800 34px/1.12 var(--sans);
+      font: 900 34px/1.12 var(--sans);
       letter-spacing: -0.6px;
     }
-    .lede{color:var(--muted); max-width:65ch; margin:0 0 14px}
+    .lede{color:var(--muted); max-width:68ch; margin:0 0 14px}
     .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
     .pill{
       border:1px solid var(--border); background:var(--soft);
@@ -142,14 +157,14 @@
       background: linear-gradient(135deg, rgba(187,102,255,.18), rgba(255,209,102,.12));
       color:var(--ink);
       padding:10px 12px; border-radius:14px;
-      text-decoration:none; font-weight:800; font-size:13px;
+      text-decoration:none; font-weight:1000; font-size:13px;
       box-shadow: 0 14px 40px rgba(0,0,0,.18);
       display:inline-flex; align-items:center; gap:10px;
     }
     .btn.secondary{
       border-color: var(--border);
       background: var(--card);
-      font-weight:800;
+      font-weight:1000;
     }
     .btn:focus{outline:none; box-shadow: 0 0 0 6px var(--ring), 0 14px 40px rgba(0,0,0,.18);}
 
@@ -159,8 +174,8 @@
       border-radius: var(--radius);
       padding:16px;
     }
-    .kicker{font-weight:900; letter-spacing:.5px; font-size:12px; color:var(--muted)}
-    .big{font:900 18px/1.2 var(--sans); margin:8px 0 8px}
+    .kicker{font-weight:1000; letter-spacing:.45px; font-size:12px; color:var(--muted)}
+    .big{font:1000 18px/1.2 var(--sans); margin:8px 0 8px}
     .mini{color:var(--muted); font-size:13px; margin:0 0 10px}
     .mono{font-family:var(--mono); font-size:12px; color:var(--muted)}
     .tree{
@@ -191,10 +206,28 @@
       box-shadow: 0 16px 50px rgba(0,0,0,.18);
       padding:18px;
     }
-    .card h2{margin:0 0 8px; font: 900 20px/1.2 var(--sans)}
-    .card h3{margin:16px 0 8px; font: 900 15px/1.2 var(--sans); color: var(--ink)}
+    .card h2{margin:0 0 8px; font: 1000 20px/1.2 var(--sans)}
+    .card h3{margin:16px 0 8px; font: 1000 15px/1.2 var(--sans); color: var(--ink)}
     .muted{color:var(--muted)}
     .hr{height:1px; background:var(--border); margin:14px 0}
+
+    /* Principles banner */
+    .principles{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 980px){ .principles{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width: 520px){ .principles{grid-template-columns: 1fr;} }
+    .pBox{
+      border:1px solid var(--border);
+      border-radius: 16px;
+      padding:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,0));
+    }
+    .pBox b{display:block; font-weight:1000; font-size:13px}
+    .pBox span{display:block; color:var(--muted); font-size:12px; margin-top:3px}
 
     /* Week modules */
     .weeks{display:grid; gap:12px}
@@ -245,7 +278,7 @@
       background: rgba(74,222,128,.10);
       color: var(--ink);
       white-space:nowrap;
-      font-weight:800;
+      font-weight:1000;
     }
     .weekBody{ padding: 0 14px 14px; }
     .twoCol{
@@ -305,7 +338,7 @@
       color:var(--ink);
       border-radius: 14px;
       padding:10px 10px;
-      font-weight:900;
+      font-weight:1000;
       font-size:12px;
       cursor:pointer;
     }
@@ -370,11 +403,9 @@
         <div>
           <div class="brandline">
             <div class="logo" aria-hidden="true">
-              <!-- simple animated glyph (no external files) -->
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M12 2c3.7 2.4 6 6.4 6 10.8C18 18 15.3 22 12 22S6 18 6 12.8C6 8.4 8.3 4.4 12 2Z"
-                      stroke="currentColor" stroke-width="1.6" opacity=".85">
-                </path>
+                      stroke="currentColor" stroke-width="1.6" opacity=".85"></path>
                 <path d="M12 7v10" stroke="currentColor" stroke-width="1.6" opacity=".65"></path>
                 <path d="M8.3 10.3c2.6 1.2 4.8 1.2 7.4 0" stroke="currentColor" stroke-width="1.6" opacity=".55"></path>
               </svg>
@@ -387,28 +418,52 @@
 
           <h1>Modified Khemetian Tree of Life — 8-Week Public Course</h1>
           <p class="lede">
-            A structured initiatory curriculum based on your Tree of Life map:
-            <b>Amen → Ausar → Heru → Tehuti/Maat → Sekert/Sebek/Het-Heru → Auset → Geb → Nehebkau/Uatchet/Sheps</b>.
-            Includes SGI A–B–C pathways and a private progress tracker saved on your device.
+            This is a SwamiG Institute study path built on four core principles:
+            <b>Many Paths → One Truth</b>, <b>We Seek No Followers</b>, <b>Stand on the Shoulders of the Ancestors</b>,
+            and <b>Live What You Learn</b>.
+            The Tree is taught as a living framework: <b>Amen → Ausar → Heru → Tehuti/Maat → Sekert/Sebek/Het-Heru → Auset → Geb → Nehebkau/Uatchet/Sheps</b>.
           </p>
 
+          <div class="principles" aria-label="SwamiG Institute principles">
+            <div class="pBox">
+              <b>Many Paths → One Truth</b>
+              <span>Respect traditions; pursue alignment with truth.</span>
+            </div>
+            <div class="pBox">
+              <b>We Seek No Followers</b>
+              <span>We cultivate disciplined students and responsible servants.</span>
+            </div>
+            <div class="pBox">
+              <b>Ancestral Grounding</b>
+              <span>We honor the lineage of enlightened ancestors.</span>
+            </div>
+            <div class="pBox">
+              <b>Practice Over Performance</b>
+              <span>Real spirituality shows in conduct, speech, and results.</span>
+            </div>
+          </div>
+
           <div class="pillrow">
-            <span class="pill"><b>I·O·W·L·H</b> — Institute of World Life Healing</span>
-            <span class="pill"><b>A–B–C</b> — Ilekes • Warriors • Hand of Ifá</span>
-            <span class="pill"><b>Uatchet</b> (Wadjet) — Protective Sacred Fire</span>
-            <span class="pill"><b>Public</b> — study + reflection (not medical/legal)</span>
+            <span class="pill"><b>A–B–C</b> Paths: Ilekes • Warriors • Hand of Ifá</span>
+            <span class="pill"><b>Uatchet</b> (Wadjet): Protective Sacred Fire</span>
+            <span class="pill"><b>Public</b>: study + reflection (progress saved locally)</span>
           </div>
 
           <div class="ctaRow">
             <a class="btn" href="#weeks">Enter the 8 Weeks</a>
-            <a class="btn secondary" href="#completion">Completion + Certificate Notes</a>
+            <a class="btn secondary" href="#completion">Completion + Integrity</a>
           </div>
+
+          <!-- minimal IOWLH mention -->
+          <p class="muted" style="margin:12px 0 0; font-size:12px;">
+            Optional reference: this course also aligns with a simple three-stage arc — Know Thyself → Cleanse & Purify → Live in Alignment.
+          </p>
         </div>
 
         <aside class="side">
           <div class="kicker">TREE (RENDER)</div>
-          <div class="big">Amen → Ausar → (Heru / Tehuti / Maat / Sekert) → Auset → Geb → Lower Triad</div>
-          <p class="mini">Corrected: <b>Uatchet</b> replaces “Qethet” in the lower triad.</p>
+          <div class="big">A living map for truth, discipline, and ancestral alignment</div>
+          <p class="mini">Corrected lower triad includes <b>Uatchet</b> (Wadjet).</p>
           <div class="tree" aria-label="Text rendering of the tree">
 AMEN
   │
@@ -428,7 +483,7 @@ GEB
 └─ SHEPS
           </div>
           <div class="mono" style="margin-top:10px;">
-            Declarations: <b>Many paths → One truth</b> • <b>We seek no followers</b>
+            Declaration: <b>Live what you learn.</b> Results are the proof.
           </div>
         </aside>
       </div>
@@ -437,20 +492,19 @@ GEB
     <main class="grid">
       <!-- Main content -->
       <section class="card">
-        <h2>Course Framework</h2>
+        <h2>How to Use This Course (SGI Style)</h2>
         <p class="muted">
-          This course follows the I·O·W·L·H progression:
-          <b>(1) Know Thyself</b> → <b>(2) Cleanse & Purify</b> → <b>(3) Live in Alignment with Absolute Truth</b>.
-          Each week gives a principle, practice, and A–B–C emphasis.
+          Each week has: <b>Principles</b> (what to understand), <b>Practices</b> (what to do), and a <b>Checklist</b> (what to complete).
+          The goal is not information—it is <b>alignment</b>. This is why SGI emphasizes: <b>practice over performance</b>.
         </p>
 
         <div class="hr"></div>
 
         <h3>Three SGI Paths (A–B–C)</h3>
         <ul>
-          <li><b>A — Ilekes Path:</b> Know Thyself through Radical Devotion (identity, alignment, authority).</li>
-          <li><b>B — Warriors Path:</b> Cleanse & Purify through Words of Power (discipline, ethical speech, defense).</li>
-          <li><b>C — Hand of Ifá:</b> Live in Alignment with Absolute Truth through Infinite Wisdom (destiny, divination, ancestors).</li>
+          <li><b>A — Ilekes Path:</b> identity, devotion, authorization, and alignment.</li>
+          <li><b>B — Warriors Path:</b> discipline, ethical speech, purification, and spiritual defense.</li>
+          <li><b>C — Hand of Ifá:</b> wisdom, destiny alignment, ancestral intelligence, and divination readiness.</li>
         </ul>
 
         <div class="hr"></div>
@@ -458,24 +512,22 @@ GEB
         <h3 id="weeks">The 8 Weeks</h3>
         <p class="muted">Open a week, complete the checklist, and your progress updates automatically.</p>
 
-        <div class="weeks" id="weeksContainer">
-          <!-- Weeks injected by JS -->
-        </div>
+        <div class="weeks" id="weeksContainer"></div>
 
         <div class="hr"></div>
 
-        <h2 id="completion">Completion + Certificate Notes</h2>
+        <h2 id="completion">Completion + Integrity (Public)</h2>
         <p class="muted">
-          Public completion means: you finished all checklists, wrote the reflections, and can explain the Tree as a living framework.
-          SGI certification options (if offered in your program context) may require additional reviews, interviews, and/or practice logs.
+          Public completion means: you finished all checklists and can explain how the Tree changes your <b>conduct</b>, <b>speech</b>, and <b>choices</b>.
+          In SGI terms: <b>knowledge without character is incomplete.</b>
         </p>
 
         <h3>Completion Commitments</h3>
         <ul>
-          <li><b>Many paths → One truth.</b></li>
+          <li><b>Many paths → one truth.</b></li>
           <li><b>We seek no followers.</b> We seek disciplined students and responsible servants of truth.</li>
-          <li>I stand on the shoulders of the Ancestors and honor the lineage of enlightenment.</li>
-          <li>I apply wisdom in conduct, speech, and spiritual responsibility.</li>
+          <li><b>Ancestral grounding:</b> I stand on the shoulders of the ancestors and honor lineage.</li>
+          <li><b>Practice over performance:</b> I will live what I learn.</li>
         </ul>
 
         <div class="hr"></div>
@@ -493,7 +545,7 @@ GEB
           <span class="chip" id="saveStatus">Saved locally</span>
         </h2>
         <p class="muted" style="margin-top:0">
-          Your checkmarks are stored on <b>this device</b> only (localStorage). Use the buttons below to export or reset.
+          Your checkmarks are stored on <b>this device</b> only (localStorage).
         </p>
 
         <div class="statRow">
@@ -519,8 +571,7 @@ GEB
         </div>
 
         <div class="notice">
-          Tip: If you’re publishing this publicly, anyone can use it—but progress remains private per device.
-          To share completion, export your progress and save the file.
+          Tip: To show completion publicly, export your progress file and keep it as your personal record.
         </div>
       </aside>
     </main>
@@ -538,125 +589,125 @@ GEB
 
   <script>
     (function(){
-      const STORAGE_KEY = "sgi_tree_of_life_8wk_public_v1";
+      const STORAGE_KEY = "sgi_tree_of_life_8wk_public_sgi_v1";
 
       const weeks = [
         {
           num: 1,
           title: "Amen",
           subtitle: "The Hidden Source",
-          chips: ["Stage: Know Thyself", "A–C emphasis"],
+          chips: ["SGI: Stillness → Power", "A–C emphasis"],
           principle: [
             "Stillness precedes power.",
-            "All form arises from the unseen."
+            "The unseen governs outcomes before the seen appears."
           ],
           practice: [
             "7-minute silence (daily).",
-            "Breath awareness + observation.",
+            "Breath awareness + observation (no performance).",
             "Ancestral acknowledgment (spoken or written)."
           ],
           path: [
-            "A (Ilekes): identity before form.",
-            "C (Hand of Ifá): destiny exists before birth."
+            "A (Ilekes): identity before display—devotion in private.",
+            "C (Hand of Ifá): destiny exists before circumstances."
           ],
           checklist: [
-            {t:"Silence practice completed 3+ times this week", s:"Record what changed in your attention."},
+            {t:"Silence practice completed 3+ times", s:"Notice what you stop chasing when you get quiet."},
             {t:"Ancestral acknowledgment completed", s:"Name who you stand on (known or unknown)."},
-            {t:"Reflection written (6–10 sentences)", s:"What is ‘hidden’ in you that still governs outcomes?"}
+            {t:"Reflection written (6–10 sentences)", s:"What unseen force is shaping your life right now?"}
           ]
         },
         {
           num: 2,
           title: "Ausar",
-          subtitle: "Divine Law & Resurrection",
-          chips: ["Stage: Know Thyself", "A–B emphasis"],
+          subtitle: "Divine Law & Restoration",
+          chips: ["SGI: Self-rule", "A–B emphasis"],
           principle: [
-            "Self-rule is the beginning of spiritual kingship.",
-            "Restoration follows fragmentation."
+            "Self-rule is the beginning of spiritual authority.",
+            "Restoration follows fragmentation—repair is sacred."
           ],
           practice: [
             "Ethical self-inventory (conduct, speech, discipline).",
-            "Commitment vow: one behavior you will correct.",
+            "One corrective vow (simple + measurable).",
             "Daily review: what did I restore today?"
           ],
           path: [
-            "A (Ilekes): authority through alignment.",
-            "B (Warriors): discipline of conduct."
+            "A (Ilekes): authority through alignment, not hype.",
+            "B (Warriors): discipline of conduct—clean life, clean power."
           ],
           checklist: [
             {t:"Completed ethical self-inventory", s:"List 3 strengths + 3 corrections."},
-            {t:"Made one vow and followed it 4+ days", s:"Keep it realistic and measurable."},
-            {t:"Reflection written", s:"Where do you need resurrection (renewal) in your life?"}
+            {t:"Kept one corrective vow 4+ days", s:"Small vow done consistently beats big vow done once."},
+            {t:"Reflection written", s:"Where do you need restoration (renewal) most?"}
           ]
         },
         {
           num: 3,
           title: "Heru",
           subtitle: "Awakened Consciousness & Right Action",
-          chips: ["Stage: Cleanse & Purify", "B–C emphasis"],
+          chips: ["SGI: Clarity → Action", "B–C emphasis"],
           principle: [
             "Awareness governs power.",
-            "Action without clarity creates disorder."
+            "Action without clarity produces disorder."
           ],
           practice: [
-            "Observe reaction patterns (anger, fear, ego).",
-            "Alignment journaling: ‘What would right action look like?’",
-            "Eye-of-Heru focus (steady attention practice)."
+            "Observe reactions (anger, fear, ego).",
+            "Alignment journaling: ‘What is right action here?’",
+            "Eye-of-Heru focus practice (steady attention)."
           ],
           path: [
-            "B (Warriors): conscious restraint.",
-            "C (Hand of Ifá): clarity before divination."
+            "B (Warriors): conscious restraint and ethical strength.",
+            "C (Hand of Ifá): clarity before divination or major choices."
           ],
           checklist: [
-            {t:"Tracked 3 reaction patterns", s:"Write trigger → reaction → consequence."},
-            {t:"Practiced ‘right action’ once in a hard moment", s:"Describe the decision you made."},
-            {t:"Reflection written", s:"How does clarity change the way you act?"}
+            {t:"Tracked 3 reaction patterns", s:"Trigger → reaction → consequence."},
+            {t:"Practiced ‘right action’ in a hard moment", s:"Describe the choice and why it was right."},
+            {t:"Reflection written", s:"How does clarity change your power?"}
           ]
         },
         {
           num: 4,
           title: "Tehuti & Maat",
           subtitle: "Wisdom, Speech & Truth",
-          chips: ["Stage: Cleanse & Purify", "B emphasis"],
+          chips: ["SGI: Words matter", "B emphasis"],
           principle: [
             "Words shape reality.",
-            "Truth sustains order."
+            "Truth sustains order; falsehood collapses power."
           ],
           practice: [
             "Speech discipline: remove one harmful habit (gossip, exaggeration, needless conflict).",
-            "Maat check: truth, balance, justice in daily decisions.",
-            "Sacred writing: statement of truth (short and clean)."
+            "Daily ‘Maat check’: truth, balance, justice in decisions.",
+            "Sacred writing: a short statement of truth you will live."
           ],
           path: [
-            "B (Warriors): words of power.",
-            "A (Ilekes): truth in devotion."
+            "B (Warriors): words of power—speech is a weapon and a medicine.",
+            "A (Ilekes): devotion becomes real through truth."
           ],
           checklist: [
-            {t:"Completed a 3-day speech discipline", s:"Name what you stopped and how it changed you."},
+            {t:"Completed a 3-day speech discipline", s:"Name what you stopped and what changed."},
             {t:"Performed 5 ‘Maat checks’", s:"Pause → choose truth → act."},
-            {t:"Reflection written", s:"How does speech either build or break your destiny?"}
+            {t:"Reflection written", s:"How does your speech create (or destroy) alignment?"}
           ]
         },
         {
           num: 5,
           title: "Sekert • Sebek • Het-Heru",
           subtitle: "Transformation, Protection & Harmony",
-          chips: ["Stage: Cleanse & Purify", "B–A emphasis"],
+          chips: ["SGI: Power tempered", "B–A emphasis"],
           principle: [
             "Power must be tempered with harmony.",
-            "Protection is internal and external."
+            "Protection is both internal and external."
           ],
           practice: [
-            "Shadow observation (without shame).",
+            "Shadow observation (no shame, no excuses).",
             "Protective boundary: one ‘no’ you will keep.",
-            "Harmony practice: restore joy, gratitude, music, beauty."
+            "Harmony practice: restore joy, gratitude, beauty."
           ],
           path: [
-            "B (Warriors): spiritual defense.",
-            "A (Ilekes): devotion through balance."
+            "B (Warriors): spiritual defense and emotional control.",
+            "A (Ilekes): devotion that does not lose balance."
           ],
           checklist: [
-            {t:"Named one shadow pattern clearly", s:"State it without excuses or condemnation."},
+            {t:"Named one shadow pattern clearly", s:"State it plainly—then choose a correction."},
             {t:"Kept one boundary all week", s:"One ‘no’ that protected your alignment."},
             {t:"Reflection written", s:"What happens when you balance power with harmony?"}
           ]
@@ -665,72 +716,72 @@ GEB
           num: 6,
           title: "Auset",
           subtitle: "Initiation & Sacred Restoration",
-          chips: ["Stage: Know Thyself → Truth alignment bridge", "A–C emphasis"],
+          chips: ["SGI: Initiation = reconstruction", "A–C emphasis"],
           principle: [
             "Initiation restores what was fragmented.",
-            "Wisdom is activated, not inherited."
+            "Wisdom is activated through practice, not claimed by title."
           ],
           practice: [
             "Reconstruction work: rebuild one area (routine, prayer, study, discipline).",
-            "Offer gratitude to the Mothers/Ancestors.",
-            "Reaffirm vow from Week 2 with deeper clarity."
+            "Offer gratitude to Mothers/Ancestors.",
+            "Renew your corrective vow with deeper clarity."
           ],
           path: [
-            "A (Ilekes): radical devotion.",
-            "C (Hand of Ifá): initiatory readiness."
+            "A (Ilekes): radical devotion—alignment that shows in choices.",
+            "C (Hand of Ifá): readiness—humility before wisdom."
           ],
           checklist: [
             {t:"Rebuilt one routine or discipline", s:"Show the before/after (simple notes)."},
             {t:"Completed a gratitude offering", s:"Water, candle, prayer, or written thanks."},
-            {t:"Reflection written", s:"What does ‘restoration’ mean in your lived experience?"}
+            {t:"Reflection written", s:"What does ‘initiation’ mean in your life right now?"}
           ]
         },
         {
           num: 7,
           title: "Geb",
           subtitle: "Embodiment & Earth Alignment",
-          chips: ["Stage: Live in Alignment", "B–C emphasis"],
+          chips: ["SGI: Live what you learn", "B–C emphasis"],
           principle: [
             "Spirit must root in matter.",
             "Alignment is lived, not spoken."
           ],
           practice: [
-            "Body awareness (sleep, food, movement).",
+            "Body discipline (sleep, food, movement).",
             "Daily conduct review (honesty + responsibility).",
             "Grounding: nature contact or stillness with earth."
           ],
           path: [
-            "B (Warriors): discipline of the body.",
-            "C (Hand of Ifá): destiny expressed in action."
+            "B (Warriors): discipline of the body—strength with integrity.",
+            "C (Hand of Ifá): destiny expresses through daily action."
           ],
           checklist: [
             {t:"Completed 4+ days of body discipline", s:"Pick one: sleep, movement, or nutrition."},
             {t:"Daily conduct review done 5+ times", s:"One correction per day is enough."},
-            {t:"Reflection written", s:"How does embodiment reveal the truth of your practice?"}
+            {t:"Reflection written", s:"Where does your life prove (or disprove) your truth?"}
           ]
         },
         {
           num: 8,
           title: "Nehebkau • Uatchet • Sheps",
           subtitle: "Vital Force, Sacred Fire & Noble Form",
-          chips: ["Stage: Live in Alignment", "All paths unified"],
+          chips: ["SGI: Noble character", "All paths unified"],
           principle: [
             "Power rises when discipline is complete.",
-            "Nobility is a state of being."
+            "Nobility is a state of being—seen in speech, choices, and service."
           ],
           practice: [
             "Nehebkau: life-force awareness (calm strength, not hype).",
-            "Uatchet (Wadjet): protective sacred fire (seal your boundaries and intentions).",
-            "Sheps: refined conduct (noble speech + noble choices)."
+            "Uatchet (Wadjet): protective sacred fire—seal boundaries and intentions.",
+            "Sheps: refined conduct—noble speech + noble decisions."
           ],
           path: [
-            "C (Hand of Ifá): infinite wisdom.",
+            "C (Hand of Ifá): wisdom expressed as responsibility.",
             "A–B–C unified: devotion + discipline + truth."
           ],
           checklist: [
             {t:"Completed ‘protective sealing’ (Uatchet) practice", s:"Declare what you protect and why."},
             {t:"Identified one life-force leak and corrected it", s:"Time, speech, habits, or relationships."},
-            {t:"Final integration reflection", s:"Write your 8-week personal doctrine (short + clear)."}
+            {t:"Final integration reflection", s:"Write your 8-week personal doctrine (short + lived)." }
           ]
         }
       ];
@@ -755,12 +806,21 @@ GEB
       }
 
       const state = loadState();
+      const weeksContainer = document.getElementById("weeksContainer");
 
       function keyFor(wi, ci){ return `w${wi}_c${ci}`; }
 
+      function escapeHtml(str){
+        return String(str)
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
+      }
+
       function renderWeeks(){
-        const container = document.getElementById("weeksContainer");
-        container.innerHTML = "";
+        weeksContainer.innerHTML = "";
 
         weeks.forEach((w, wi)=>{
           const details = document.createElement("details");
@@ -814,16 +874,14 @@ GEB
             <div class="hr"></div>
             <h3 style="margin:0 0 6px;">Practices</h3>
             <ul>${w.practice.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul>
+            <div class="hr"></div>
+            <h3 style="margin:0 0 6px;">A–B–C Emphasis</h3>
+            <ul>${w.path.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul>
           `;
 
           const box2 = document.createElement("div");
           box2.className = "box";
-          box2.innerHTML = `
-            <h3 style="margin:0 0 6px;">A–B–C Emphasis</h3>
-            <ul>${w.path.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul>
-            <div class="hr"></div>
-            <h3 style="margin:0 0 6px;">Checklist</h3>
-          `;
+          box2.innerHTML = `<h3 style="margin:0 0 6px;">Checklist</h3>`;
 
           const checks = document.createElement("div");
           checks.className = "checks";
@@ -862,7 +920,7 @@ GEB
           details.appendChild(summary);
           details.appendChild(body);
 
-          container.appendChild(details);
+          weeksContainer.appendChild(details);
           updateWeekProgress(wi);
         });
       }
@@ -896,8 +954,9 @@ GEB
       function exportProgress(){
         const totalTasks = weeks.reduce((acc,w)=>acc + w.checklist.length, 0);
         let done = 0;
+
         const report = {
-          title: "SGI — Modified Khemetian Tree of Life — 8-Week Public Course",
+          title: "SwamiG Institute — Modified Khemetian Tree of Life — 8-Week Public Course",
           exported_at: new Date().toISOString(),
           total_tasks: totalTasks,
           completed_tasks: 0,
@@ -947,15 +1006,6 @@ GEB
 
       function openAll(open){
         document.querySelectorAll("details.week").forEach(d=> d.open = open);
-      }
-
-      function escapeHtml(str){
-        return String(str)
-          .replaceAll("&","&amp;")
-          .replaceAll("<","&lt;")
-          .replaceAll(">","&gt;")
-          .replaceAll('"',"&quot;")
-          .replaceAll("'","&#039;");
       }
 
       // Wire buttons
