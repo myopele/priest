@@ -2,17 +2,15 @@
 SGI / Khemet–Ifá — Tree of Life (Interactive Teaching Page)
 File: sgi-khemet-ifa-tree-16week.html
 
-HOW TO USE:
-1) Save this file as: sgi-khemet-ifa-tree-16week.html
-2) Put it in the SAME folder as:
-   - SwamiG.gif               (optional SGI logo)
-   - khemet-ifa-tree.jpg      (optional: the poster image you shared; rename as needed)
-3) Open locally, or upload to GitHub Pages / Cloudflare Pages.
+SETUP (same repo/folder):
+- SwamiG.gif                 (SGI logo)
+- KhemticIfaTreeOfLife.png   (your poster image)
 
-FEATURES:
-- Clickable “Tree Nodes” (quick teaching notes + prompts)
-- 16-week course with checkboxes + notes saved in localStorage
-- Print-friendly “Summary” section
+WHAT YOU GET:
+- SGI dark styling (purple/gold glow)
+- Clickable SGI logo (set LINK in one place)
+- Poster embedded + tap/click to full-screen view
+- 16-week learning modules with checkboxes + notes saved locally (localStorage)
 ========================================================= -->
 <!doctype html>
 <html lang="en">
@@ -27,7 +25,6 @@ FEATURES:
     :root{
       --bg:#0b0b0f;
       --panel:#11121a;
-      --panel2:#0f1016;
       --ink:#f2f3f7;
       --muted:#b9bcc8;
       --line:rgba(255,255,255,.10);
@@ -35,7 +32,6 @@ FEATURES:
       --gold2:#f2d58a;
       --amethyst:#8a5cff;
       --rose:#ff5cc8;
-      --good:#5cffb1;
 
       --r:18px;
       --shadow: 0 18px 60px rgba(0,0,0,.45);
@@ -71,10 +67,35 @@ FEATURES:
       padding:10px 16px;
       display:flex; align-items:center; gap:14px; justify-content:space-between;
     }
-    .brand{ display:flex; align-items:center; gap:10px; min-width: 220px; }
-    .brand img{ width:34px; height:34px; object-fit:contain; border-radius:10px; background:rgba(255,255,255,.06); padding:6px; border:1px solid var(--line); }
-    .brand .t1{ font-weight:800; letter-spacing:.2px; }
-    .brand .t2{ font-size:12px; color:var(--muted); margin-top:-2px; }
+
+    .brandLink{
+      display:flex; align-items:center; gap:10px;
+      min-width: 240px;
+      border-radius: 16px;
+      padding:6px 8px;
+      border:1px solid transparent;
+      transition: .18s ease;
+    }
+    .brandLink:hover{
+      border-color: rgba(215,179,93,.40);
+      background: rgba(255,255,255,.03);
+      transform: translateY(-1px);
+    }
+    .brandLink:focus-visible{
+      outline: 2px solid rgba(138,92,255,.65);
+      outline-offset: 3px;
+    }
+    .brandLink img{
+      width:34px; height:34px;
+      object-fit:contain;
+      border-radius:10px;
+      background:rgba(255,255,255,.06);
+      padding:6px;
+      border:1px solid var(--line);
+      box-shadow: 0 0 18px rgba(215,179,93,.14);
+    }
+    .brandLink .t1{ font-weight:900; letter-spacing:.2px; }
+    .brandLink .t2{ font-size:12px; color:var(--muted); margin-top:-2px; }
 
     .chips{ display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
     .chip{
@@ -86,12 +107,14 @@ FEATURES:
       font-size:12px;
       transition: .18s ease;
       user-select:none;
+      cursor:pointer;
     }
     .chip:hover{ transform: translateY(-1px); border-color: rgba(215,179,93,.45); color:var(--ink); }
     .chip.primary{
       color: var(--ink);
       border-color: rgba(138,92,255,.45);
       background: linear-gradient(90deg, rgba(138,92,255,.18), rgba(215,179,93,.10));
+      cursor:pointer;
     }
 
     /* Hero */
@@ -136,7 +159,7 @@ FEATURES:
     .sub{
       color: var(--muted);
       margin:0 0 14px;
-      max-width: 60ch;
+      max-width: 65ch;
     }
     .heroBtns{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
     .btn{
@@ -146,7 +169,7 @@ FEATURES:
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       color: var(--ink);
-      font-weight:650;
+      font-weight:750;
       font-size:13px;
       transition:.18s ease;
       box-shadow: var(--shadow2);
@@ -184,7 +207,8 @@ FEATURES:
       width:100%;
       height:auto;
       display:block;
-      opacity:.96;
+      opacity:.97;
+      cursor:pointer;
     }
     .posterNote{
       position:absolute; inset:auto 10px 10px 10px;
@@ -195,7 +219,9 @@ FEATURES:
       color: var(--muted);
       font-size:12px;
       backdrop-filter: blur(8px);
+      cursor:pointer;
     }
+    .posterNote:hover{ border-color: rgba(215,179,93,.45); color: var(--ink); }
 
     /* Sections */
     .grid{
@@ -244,7 +270,7 @@ FEATURES:
       transition:.16s ease;
     }
     .node:hover{ transform: translateY(-1px); border-color: rgba(215,179,93,.45); }
-    .node .name{ font-weight:800; }
+    .node .name{ font-weight:900; }
     .node .map{ color: var(--muted); font-size:12px; margin-top:2px; }
     .node .tag{
       font-size:11px;
@@ -282,7 +308,7 @@ FEATURES:
     .modalTop .title{
       margin:0;
       font-size:16px;
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.2px;
     }
     .modalTop .subt{ margin:3px 0 0; color:var(--muted); font-size:12px; }
@@ -293,7 +319,7 @@ FEATURES:
       border-radius: 12px;
       padding:8px 10px;
       cursor:pointer;
-      font-weight:800;
+      font-weight:900;
     }
     .modalBody{ padding:14px; display:grid; grid-template-columns: 1.1fr .9fr; gap:12px; }
     @media (max-width: 900px){ .modalBody{ grid-template-columns:1fr; } }
@@ -327,10 +353,10 @@ FEATURES:
       cursor:pointer;
       display:flex; align-items:center; justify-content:space-between; gap:10px;
       list-style:none;
-      font-weight:900;
+      font-weight:950;
     }
     summary::-webkit-details-marker{ display:none; }
-    .wkMeta{ color:var(--muted); font-weight:600; font-size:12px; }
+    .wkMeta{ color:var(--muted); font-weight:650; font-size:12px; }
     .wkBody{ margin-top:10px; color:var(--muted); }
     .checkRow{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 6px; }
     label.chk{
@@ -367,7 +393,6 @@ FEATURES:
       color: var(--muted);
       display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
     }
-    .printBtn{ cursor:pointer; }
 
     @media print{
       .topbar, .heroBtns, .chips, .posterNote, .printHide { display:none !important; }
@@ -384,18 +409,21 @@ FEATURES:
   <!-- TOPBAR -->
   <div class="topbar printHide">
     <div class="inner">
-      <div class="brand">
+      <!-- CLICKABLE LOGO / BRAND -->
+      <!-- Set your SGI click link here -->
+      <a class="brandLink" id="sgiLogoLink" href="index.html" title="Back to SGI Home">
         <img src="SwamiG.gif" alt="SGI logo" onerror="this.style.display='none'">
         <div>
           <div class="t1">SwamiG Institute</div>
           <div class="t2">Khemet–Ifá Tree of Life • 16-Week Track</div>
         </div>
-      </div>
+      </a>
+
       <div class="chips">
         <a class="chip primary" href="#nodes">Tree Nodes</a>
         <a class="chip" href="#course">16 Weeks</a>
         <a class="chip" href="#summary">Printable Summary</a>
-        <button class="chip printBtn" onclick="window.print()">Print</button>
+        <button class="chip" onclick="window.print()">Print</button>
       </div>
     </div>
   </div>
@@ -405,16 +433,16 @@ FEATURES:
     <section class="hero" id="top">
       <div class="heroGrid">
         <div class="heroLeft">
-          <div class="kicker"><span class="dot"></span> Teaching Map • Source → Mind → Action → Heart → Gate → Creation → Earth → Ancestors</div>
+          <div class="kicker"><span class="dot"></span> Source → Mind → Action → Heart → Gate → Creation → Earth → Ancestors</div>
           <h1>Khemet–Ifá Tree of Life</h1>
           <p class="sub">
-            An SGI learning framework that maps Khemetian principles (Neteru) to Yoruba/Ifá correspondences and
-            trains the student to interpret the system as a living “Temple is the Body” model.
+            This SGI teaching page maps Khemetian principles (Neteru) to Yoruba/Ifá correspondences and trains
+            the student to read the system as a living “Temple is the Body” model.
           </p>
           <div class="heroBtns printHide">
             <a class="btn gold" href="#course">Start Week 1</a>
             <a class="btn purple" href="#nodes">Open Tree Nodes</a>
-            <a class="btn" href="#summary">View Summary</a>
+            <button class="btn" onclick="openPoster()">View Poster Fullscreen</button>
           </div>
           <p class="small printHide">
             Progress (checks + notes) saves on this device only (localStorage).
@@ -422,16 +450,15 @@ FEATURES:
         </div>
 
         <div class="heroRight">
-          <div class="poster">
-            <img src="khemet-ifa-tree.jpg" alt="Khemet–Ifá Tree of Life poster"
+          <div class="poster" title="Tap to view full poster">
+            <img src="KhemticIfaTreeOfLife.png" alt="Khemet–Ifá Tree of Life poster"
+                 onclick="openPoster()"
                  onerror="this.style.display='none'; document.getElementById('posterFallback').style.display='block';" />
             <div id="posterFallback" style="display:none; padding:14px; color:var(--muted);">
               <b>Poster image not found.</b><br>
-              Put your image in this folder and name it <b>khemet-ifa-tree.jpg</b> (or edit the filename in the HTML).
+              Put <b>KhemticIfaTreeOfLife.png</b> in the same folder as this HTML file.
             </div>
-            <div class="posterNote printHide">
-              Tip: use this as your class “anchor visual.” Students revisit it every week.
-            </div>
+            <div class="posterNote" onclick="openPoster()">Tap to view full poster</div>
           </div>
         </div>
       </div>
@@ -450,83 +477,53 @@ FEATURES:
         </div>
         <div class="bd">
           <div class="nodes">
-            <div class="node" onclick="openNode('Amen', 'Obatala', 'Source / Supreme Consciousness', 'Purity, stillness, creation authority. Establish the highest reference point before any divination or action.', ['Stillness practice', 'Purity & ethics', 'Aṣẹ as creative word'], ['Where is your mind when nothing is happening?', 'What does “purity” require of your speech this week?'])">
-              <div>
-                <div class="name">Amen</div>
-                <div class="map">(Obatala)</div>
-              </div>
+            <div class="node" onclick="openNode('Amen','Obatala','Source / Supreme Consciousness','Purity, stillness, creation authority. Establish the highest reference point before any divination or action.',['Stillness practice','Purity & ethics','Aṣẹ as creative word'],['Where is your mind when nothing is happening?','What does “purity” require of your speech this week?'])">
+              <div><div class="name">Amen</div><div class="map">(Obatala)</div></div>
               <div class="tag">SOURCE</div>
             </div>
 
-            <div class="node" onclick="openNode('Tehuti', 'Orunmila', 'Right Brain / Wisdom / Divination', 'Witness of destiny, sacred intelligence, interpretation, memory of heaven. Divination as a disciplined language.', ['Witness of fate', 'Symbol literacy', 'Truth-telling'], ['What is the difference between knowing and guessing?', 'What did the sign teach you that logic missed?'])">
-              <div>
-                <div class="name">Tehuti</div>
-                <div class="map">(Orunmila)</div>
-              </div>
+            <div class="node" onclick="openNode('Tehuti','Orunmila','Right Brain / Wisdom / Divination','Witness of destiny, sacred intelligence, interpretation, memory of heaven. Divination as a disciplined language.',['Witness of fate','Symbol literacy','Truth-telling'],['What is the difference between knowing and guessing?','What did the sign teach you that logic missed?'])">
+              <div><div class="name">Tehuti</div><div class="map">(Orunmila)</div></div>
               <div class="tag">WISDOM</div>
             </div>
 
-            <div class="node" onclick="openNode('Sekert', 'Babaluaye', 'Left Brain / Transformation / Healing', 'Purification, death–rebirth, healing intelligence, shadow integration. Strength through cleansing.', ['Purification', 'Healing discipline', 'Death–rebirth'], ['What must end so you can be healed?', 'Where are you avoiding the cleanse?'])">
-              <div>
-                <div class="name">Sekert</div>
-                <div class="map">(Babaluaye)</div>
-              </div>
+            <div class="node" onclick="openNode('Sekert','Babaluaye','Left Brain / Transformation / Healing','Purification, death–rebirth, healing intelligence, shadow integration. Strength through cleansing.',['Purification','Healing discipline','Death–rebirth'],['What must end so you can be healed?','Where are you avoiding the cleanse?'])">
+              <div><div class="name">Sekert</div><div class="map">(Babaluaye)</div></div>
               <div class="tag">TRANSFORM</div>
             </div>
 
-            <div class="node" onclick="openNode('Herukhuti', 'Ogun', 'Shoulders/Arms / Action & Power', 'Tools, iron, technology, execution, discipline. Power without wisdom becomes danger.', ['Discipline', 'Tool mastery', 'Warrior ethics'], ['What tool do you need to sharpen this week?', 'Where has power outrun your ethics?'])">
-              <div>
-                <div class="name">Herukhuti</div>
-                <div class="map">(Ogun)</div>
-              </div>
+            <div class="node" onclick="openNode('Herukhuti','Ogun','Shoulders/Arms / Action & Power','Tools, iron, technology, execution, discipline. Power without wisdom becomes danger.',['Discipline','Tool mastery','Warrior ethics'],['What tool do you need to sharpen this week?','Where has power outrun your ethics?'])">
+              <div><div class="name">Herukhuti</div><div class="map">(Ogun)</div></div>
               <div class="tag">ACTION</div>
             </div>
 
-            <div class="node" onclick="openNode('Ma’at', 'Orun', 'Order / Balance / Cosmic Law', 'Alignment with truth, right measure, harmony, and the law of consequences. The scale in the heart.', ['Order & balance', 'Truth & accountability', 'Right measure'], ['What is out of balance in your daily life?', 'Where must you speak truth even if it costs?'])">
-              <div>
-                <div class="name">Ma’at</div>
-                <div class="map">(Orun)</div>
-              </div>
+            <div class="node" onclick="openNode('Ma’at','Orun','Order / Balance / Cosmic Law','Alignment with truth, right measure, harmony, and the law of consequences. The scale in the heart.',['Order & balance','Truth & accountability','Right measure'],['What is out of balance in your daily life?','Where must you speak truth even if it costs?'])">
+              <div><div class="name">Ma’at</div><div class="map">(Orun)</div></div>
               <div class="tag">LAW</div>
             </div>
 
-            <div class="node" onclick="openNode('Heru', 'Shango', 'Center / Authority & Manifestation', 'Divine authority made visible: kingship, justice, thunder, courage. Integrates wisdom + power + law.', ['Authority', 'Justice', 'Courage'], ['What would you do if you were not afraid?', 'Where must you deliver justice in your own house?'])">
-              <div>
-                <div class="name">Heru</div>
-                <div class="map">(Shango)</div>
-              </div>
+            <div class="node" onclick="openNode('Heru','Shango','Center / Authority & Manifestation','Divine authority made visible: kingship, justice, thunder, courage. Integrates wisdom + power + law.',['Authority','Justice','Courage'],['What would you do if you were not afraid?','Where must you deliver justice in your own house?'])">
+              <div><div class="name">Heru</div><div class="map">(Shango)</div></div>
               <div class="tag">CENTER</div>
             </div>
 
-            <div class="node" onclick="openNode('Sebek', 'Eshu', 'Gateway / Crossroads', 'Messenger force: language, openings, choice, destiny routes. No movement without the gate.', ['Crossroads', 'Communication', 'Choice'], ['Which road keeps repeating in your life?', 'What message have you been refusing to deliver?'])">
-              <div>
-                <div class="name">Sebek</div>
-                <div class="map">(Eshu)</div>
-              </div>
+            <div class="node" onclick="openNode('Sebek','Eshu','Gateway / Crossroads','Messenger force: language, openings, choice, destiny routes. No movement without the gate.',['Crossroads','Communication','Choice'],['Which road keeps repeating in your life?','What message have you been refusing to deliver?'])">
+              <div><div class="name">Sebek</div><div class="map">(Eshu)</div></div>
               <div class="tag">GATE</div>
             </div>
 
-            <div class="node" onclick="openNode('Auset', 'Yemaya', 'Creation / Mother Waters', 'Nurturing intelligence: protection, origin waters, compassion, emotional grounding. Holds the system together.', ['Nurture', 'Protection', 'Emotional truth'], ['What are you responsible for caring for?', 'Where is your heart asking for mercy?'])">
-              <div>
-                <div class="name">Auset</div>
-                <div class="map">(Yemaya)</div>
-              </div>
+            <div class="node" onclick="openNode('Auset','Yemaya','Creation / Mother Waters','Nurturing intelligence: protection, origin waters, compassion, emotional grounding. Holds the system together.',['Nurture','Protection','Emotional truth'],['What are you responsible for caring for?','Where is your heart asking for mercy?'])">
+              <div><div class="name">Auset</div><div class="map">(Yemaya)</div></div>
               <div class="tag">MOTHER</div>
             </div>
 
-            <div class="node" onclick="openNode('Geb', 'Ochosi', 'Earth / Precision / Manifestation', 'Grounded intelligence: tracking, accuracy, restraint, right aim. Destiny becomes practical.', ['Precision', 'Tracking', 'Grounding'], ['What are you aiming at—exactly?', 'Where must you slow down to become accurate?'])">
-              <div>
-                <div class="name">Geb</div>
-                <div class="map">(Ochosi)</div>
-              </div>
+            <div class="node" onclick="openNode('Geb','Ochosi','Earth / Precision / Manifestation','Grounded intelligence: tracking, accuracy, restraint, right aim. Destiny becomes practical.',['Precision','Tracking','Grounding'],['What are you aiming at—exactly?','Where must you slow down to become accurate?'])">
+              <div><div class="name">Geb</div><div class="map">(Ochosi)</div></div>
               <div class="tag">EARTH</div>
             </div>
 
-            <div class="node" onclick="openNode('Lineage Triad', 'Iyami • Oya • Egungun', 'Ancestors / Lineage / Spirit', 'Foundational forces beneath the tree: the Mothers (Iyami), transformation winds (Oya), ancestral continuity (Egungun).', ['Lineage protocol', 'Ancestral remembrance', 'Transformation'], ['What do your ancestors require of you?', 'What pattern in your bloodline are you here to heal?'])">
-              <div>
-                <div class="name">Nekhbet • Wadjet • Sheps</div>
-                <div class="map">(Iyami • Oya • Egungun)</div>
-              </div>
+            <div class="node" onclick="openNode('Lineage Triad','Iyami • Oya • Egungun','Ancestors / Lineage / Spirit','Foundational forces beneath the tree: the Mothers (Iyami), transformation winds (Oya), ancestral continuity (Egungun).',['Lineage protocol','Ancestral remembrance','Transformation'],['What do your ancestors require of you?','What pattern in your bloodline are you here to heal?'])">
+              <div><div class="name">Nekhbet • Wadjet • Sheps</div><div class="map">(Iyami • Oya • Egungun)</div></div>
               <div class="tag">LINEAGE</div>
             </div>
           </div>
@@ -597,7 +594,7 @@ FEATURES:
     </div>
   </div>
 
-  <!-- MODAL -->
+  <!-- NODE MODAL -->
   <div class="modalBack" id="mb" onclick="if(event.target.id==='mb') closeModal()">
     <div class="modal">
       <div class="modalTop">
@@ -622,8 +619,33 @@ FEATURES:
     </div>
   </div>
 
+  <!-- POSTER LIGHTBOX -->
+  <div class="modalBack" id="pb" onclick="if(event.target.id==='pb') closePoster()">
+    <div class="modal" style="max-width: 1000px;">
+      <div class="modalTop">
+        <div>
+          <div class="title">Khemet–Ifá Tree of Life</div>
+          <div class="subt">Poster View</div>
+        </div>
+        <button class="x" onclick="closePoster()">Close</button>
+      </div>
+      <div style="padding:14px;">
+        <img src="KhemticIfaTreeOfLife.png" alt="Khemet–Ifá Tree of Life poster"
+             style="width:100%; height:auto; border-radius:18px; border:1px solid rgba(255,255,255,.10);">
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ------- Course data (16 weeks) -------
+    // ========= CONFIG =========
+    // Change this to your real SGI home page if different:
+    // Examples: "https://swamiginstitute.com" or "../index.html"
+    const SGI_HOME_LINK = "index.html";
+
+    // Apply logo link
+    document.getElementById("sgiLogoLink").setAttribute("href", SGI_HOME_LINK);
+
+    // ======= Course data (16 weeks) =======
     const course = [
       { wk:1, title:"Amen / Obatala — Source", meta:"Stillness • Purity • Aṣẹ", learn:[
         "Define Amen/Obatala as supreme source and ethical reference.",
@@ -649,7 +671,6 @@ FEATURES:
         "Choose one cleanse: speech, food, media, or behavior (7 days).",
         "Write: what ended + what began."
       ]},
-
       { wk:4, title:"Herukhuti / Ogun — Action & Power", meta:"Discipline • Tools • Execution", learn:[
         "Define power as ethical capacity to act.",
         "Tools: what amplifies your destiny? What corrupts it?",
@@ -674,7 +695,6 @@ FEATURES:
         "Choose one ‘courage act’ you’ve avoided; complete it.",
         "Write a 1-page ‘right use of power’ statement."
       ]},
-
       { wk:7, title:"Sebek / Eshu — Gateways", meta:"Crossroads • Choice • Messages", learn:[
         "Eshu as motion, messaging, and openings.",
         "Understand crossroads: repeating life routes.",
@@ -699,7 +719,6 @@ FEATURES:
         "Set ONE measurable goal for 7 days; track it.",
         "Practice ‘pause before action’ three times daily."
       ]},
-
       { wk:10, title:"Nekhbet / Iyami — Primordial Mothers", meta:"Elder feminine power • Origin", learn:[
         "Respect protocol for elder feminine forces.",
         "Creativity and consequence: power that creates and destroys.",
@@ -708,7 +727,7 @@ FEATURES:
         "Write: what arrogance looks like in your life—and its cost.",
         "Do one act of reverence (prayer, cleanliness, service)."
       ]},
-      { wk:11, title:"Wadjet / Oya — Winds of Change", meta:"Transformation • Gate of the dead", learn:[
+      { wk:11, title:"Wadjet / Oya — Winds of Change", meta:"Transformation • Threshold", learn:[
         "Oya as change, storms, and thresholds.",
         "Learning to release without collapse.",
         "Transformation as spiritual maturity."
@@ -724,7 +743,6 @@ FEATURES:
         "Ancestral remembrance (7 days): name + gratitude + request.",
         "Write: a pattern you are here to heal."
       ]},
-
       { wk:13, title:"Temple is the Body — Mapping", meta:"Brain • Heart • Solar • Root", learn:[
         "Map the Tree onto the body (your poster model).",
         "Notice where imbalance shows physically.",
@@ -749,7 +767,7 @@ FEATURES:
         "Use the triad model on one real decision this week.",
         "Write: what changed when you used measure."
       ]},
-      { wk:16, title:"Living the Tree of Life — Graduation", meta:"Destiny alignment • Service • Continuity", learn:[
+      { wk:16, title:"Living the Tree of Life — Graduation", meta:"Alignment • Service • Continuity", learn:[
         "Build your ongoing practice rule (after the course).",
         "Service and community responsibility.",
         "Ancestral continuity: what you pass forward."
@@ -818,7 +836,6 @@ FEATURES:
         const checkRow = document.createElement("div");
         checkRow.className = "checkRow";
 
-        // Done checkbox
         const lbl = document.createElement("label");
         lbl.className = "chk";
         const cb = document.createElement("input");
@@ -833,7 +850,6 @@ FEATURES:
         lbl.appendChild(document.createTextNode("Completed"));
         checkRow.appendChild(lbl);
 
-        // Reflection checkbox
         const lbl2 = document.createElement("label");
         lbl2.className = "chk";
         const cb2 = document.createElement("input");
@@ -848,7 +864,6 @@ FEATURES:
         lbl2.appendChild(document.createTextNode("Reflection written"));
         checkRow.appendChild(lbl2);
 
-        // Notes
         const ta = document.createElement("textarea");
         ta.placeholder = "Notes / reflections for Week " + w.wk + " (saved on this device)…";
         ta.value = state["wk_note_"+w.wk] || "";
@@ -868,7 +883,7 @@ FEATURES:
       updatePct();
     }
 
-    // ------- Modal (Nodes) -------
+    // ------- Node Modal -------
     function openNode(khemet, ifa, role, teach, tags, prompts){
       document.getElementById("mTitle").textContent = khemet + " (" + ifa + ")";
       document.getElementById("mSub").textContent = role;
@@ -888,9 +903,11 @@ FEATURES:
 
       document.getElementById("mb").style.display = "flex";
     }
-    function closeModal(){
-      document.getElementById("mb").style.display = "none";
-    }
+    function closeModal(){ document.getElementById("mb").style.display = "none"; }
+
+    // ------- Poster Lightbox -------
+    function openPoster(){ document.getElementById("pb").style.display = "flex"; }
+    function closePoster(){ document.getElementById("pb").style.display = "none"; }
 
     // init
     renderCourse();
